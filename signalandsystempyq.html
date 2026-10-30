@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal and System PYQ</title>
+  
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$']],  // this tells MathJax to use $...$ for inline
+      displayMath: [['$$', '$$']]
+    }
+  };
+  </script>
+  <script src="answerscript.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/studyxohai/studyxohaifiles@028f06463083696414c219f39af6d6cfc5d9e397/pagestyle.css">
+</head>
+<body>  <script> let answerCache = null;
+
+async function loadAnswer(questionId, button) {
+    const answerBox = document.getElementById('answer-' + questionId);
+    if (!answerBox) return;
+
+    if (answerBox.classList.contains("show")) {
+        answerBox.classList.remove("show");
+        answerBox.innerHTML = "";
+        button.textContent = "Load Answer";
+        button.classList.remove("answer-open");
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Loading...";
+
+    try {
+        if (!answerCache) {
+            const response = await fetch(
+                "https://cdn.jsdelivr.net/gh/studyxohai/studyxohaifiles@27fb9f534a822f250f57461f7185a02a5ee5ce64/ssmodule1.json"
+            );
+            if (!response.ok) throw new Error("HTTP " + response.status);
+            answerCache = await response.json();
+        }
+
+        const answer = answerCache[questionId];
+        if (!answer) throw new Error("Answer not found for " + questionId);
+
+        answerBox.innerHTML = answer;
+        answerBox.classList.add("show");
+        button.textContent = "Hide Answer";
+        button.classList.add("answer-open");
+
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            await MathJax.typesetPromise([answerBox]);
+        }
+
+    } catch (error) {
+        console.error("Answer loading error:", error);
+        answerBox.innerHTML = "<p>⚠️ Could not load answer.</p>";
+        answerBox.classList.add("show");
+        button.textContent = "Try Again";
+    } finally {
+        button.disabled = false;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.load-answer').forEach(btn => {
+        btn.addEventListener('click', () => {
+            loadAnswer(btn.dataset.id, btn);
+        });
+    });
+});</script>
+    <h1>Signal and System Modulewise pyq</h1>
+    <h2 style="background-color: rgb(48, 4, 37);display:inline">Module 1</h2>
+
+  <p id="q1">1. Let $\delta(t)$ denote the delta function. The value of the integral $\textstyle \int_{-\infty}^{\infty} \delta(t)\cos(\frac{3t}{2}) dt$ is <br>(i) 1 <br>(ii) -1 <br>(iii) 0 <br>(iv) $\frac{\pi}{2}$ <span style="color:red">mark 1 ASTU 2025</span></p>
+<button class="load-answer" data-id="q1">Load Answer</button>
+<div class="answer-container" id="answer-q1"></div>
+<p id="q2">2. Invertible systems are systems in which <br>(i) output can be uniquely obtained from the knowledge of input <br>(ii) input signal can be uniquely determined by observing the output signal <br>(iii) both (a) and (b) <br>(iv) system output is always constant <span style="color:red">mark 1 ASTU 2025</span></p>
+<button class="load-answer" data-id="q2">Load Answer</button>
+<div class="answer-container" id="answer-q2"></div>
+<p id="q3">3. State 2 differences between energy signal and power signal. <span style="color:red">mark 2 ASTU 2025</span></p>
+<button class="load-answer" data-id="q3">Load Answer</button>
+<div class="answer-container" id="answer-q3"></div>
+<p id="q4">4. Explain time shifting, time reversal and time scaling operations on signals. <span style="color:red">mark 2+2+2 ASTU 2025</span></p>
+<button class="load-answer" data-id="q4">Load Answer</button>
+<div class="answer-container" id="answer-q4"></div>
+<p id="q5">5. Check whether or not the given systems are linear, time-invariant, causal, memory less and stable: y(t) = x(t-2) + x(2-t) <span style="color:red">mark 2 ASTU 2023</span></p>
+<button class="load-answer" data-id="q5">Load Answer</button>
+<div class="answer-container" id="answer-q5"></div>
+<p id="q6">6. </p>
+<button class="load-answer" data-id="q6">Load Answer</button>
+<div class="answer-container" id="answer-q6"></div>
+<p id="q7">7. $y(t) = x^2(t)$ is a <br>(i) linear time-invariant system <br>(ii) non-linear time-invariant system <br>(iii) linear time varying system <br>(iv) non-causal system <span style="color:red">mark 1 ASTU 2023</span></p>
+<button class="load-answer" data-id="q7">Load Answer</button>
+<div class="answer-container" id="answer-q7"></div>
+<p id="q8">8. Define signal and system. What are the major classifications of the signal? <span style="color:red">mark 4 ASTU 2023</span></p>
+<button class="load-answer" data-id="q8">Load Answer</button>
+<div class="answer-container" id="answer-q8"></div>
+<p id="q9">9. What do mean by unit impulse, unit step and signum function? <span style="color:red">mark 3 ASTU 2023</span></p>
+<button class="load-answer" data-id="q9">Load Answer</button>
+<div class="answer-container" id="answer-q9"></div>
+<p id="q10">10. Determine whether the following systems are Linear or Nonlinear, Shift variant or Invariant, Causal or Non-causal, Stable or unstable : <span style="color:red">mark 8 ASTU 2023</span><br>(i) $y(t) = x(t+10) + x^2(t)$<br>(ii) $\frac{dy(t)}{dt} + 10 y(t) = x(t)$</p>
+<button class="load-answer" data-id="q10">Load Answer</button>
+<div class="answer-container" id="answer-q10"></div>
+<p id="q11">11. Based on the statements below, pick the correct option <br>(A) signal $x[n] = \left(\frac{1}{2}\right)^n u[n]$ is energy signal <br>(B) signal $x[n] = \sin \omega_0 n$ is both energy and power signal. <br>(C) signal $x[n] = n u[n]$ is only power signal. <br><br>(i) only (C) is true <br>(ii) only (B) is true <br>(iii) only (A) is true <br>(iv) none of these <span style="color:red">mark 1 ASTU 2021</span></p>
+<button class="load-answer" data-id="q11">Load Answer</button>
+<div class="answer-container" id="answer-q11"></div>
+<p id="q12">12. Consider the system $y[n] = \begin{cases} x[n]-x[n-1] & \text{for } n \geq 1 \\ x[n] & \text{for } n = 0 \\ 0 & \text{else} \end{cases}$, then the system is <br>(i) linear and time-variant <br>(ii) causal and stable <br>(iii) both (a) and (b) are true <br>(iv) none of the above <span style="color:red">mark 1 ASTU 2021</span></p>
+<button class="load-answer" data-id="q12">Load Answer</button>
+<div class="answer-container" id="answer-q12"></div>
+<p id="q13">13. Sketch the signal $x(t) = 2u(t) + tu(t) - (t-1)u(t-1) - 3u(t-2)$. (5) <span style="color:red">mark 5 ASTU 2021</span></p>
+<button class="load-answer" data-id="q13">Load Answer</button>
+<div class="answer-container" id="answer-q13"></div>
+<p id="q14">14. Give a performance comparison of multichannel and multidimensional signal. <span style="color:red">mark 2 ASTU 2021</span></p>
+<button class="load-answer" data-id="q14">Load Answer</button>
+<div class="answer-container" id="answer-q14"></div>
+<p id="q15">15. Find the period of the signal, $x(t)\cos(t) + \sin\left(\frac{1}{\sqrt{2}}t\right)$.<span style="color:red">mark 3 ASTU 2021</span></p>
+<button class="load-answer" data-id="q15">Load Answer</button>
+<div class="answer-container" id="answer-q15"></div>
+<p id="q16">16. Test the linearity of the following system $\frac{d^2y(t)}{dt^2} + \frac{2dy(t)}{dt} + 3y(t) = x(t)$ <span style="color:red">mark 5 ASTU 2021</span></p>
+<button class="load-answer" data-id="q16">Load Answer</button>
+<div class="answer-container" id="answer-q16"></div>
+<p id="q17">17. Check linearity of the system $y(n) = 2x(n) + 4$. If not linear, under what condition the system will be linear? <span style="color:red">mark 4 ASTU 2018</span></p>
+<button class="load-answer" data-id="q17">Load Answer</button>
+<div class="answer-container" id="answer-q17"></div>
+<p id="q18">18. Check whether the system $y(t) = \frac{x(t)}{R(t)}$ is time invariant. <span style="color:red">mark 3 ASTU 2018</span></p>
+<button class="load-answer" data-id="q18">Load Answer</button>
+<div class="answer-container" id="answer-q18"></div>
+<p id="q19">19. Check whether the system $h(t) = te^{at}u(t)$ is stable. (4 + 3 + 3 = 10) <span style="color:red">mark 3 ASTU 2018</span></p>
+<button class="load-answer" data-id="q19">Load Answer</button>
+<div class="answer-container" id="answer-q19"></div>
+<p id="q20">20. Differentiate between energy signal and power signal. <span style="color:red">mark 4 ASTU 2018</span></p>
+<button class="load-answer" data-id="q20">Load Answer</button>
+<div class="answer-container" id="answer-q20"></div>
+<p id="q21">21. Determine whether the following signals are energy or power signal:<span style="color:red">mark 6+4 ASTU 2018</span><br>(i) $x(t) = \cos t$<br>(ii) $x(n) = u(n) - u(n-5)$.</p>
+<button class="load-answer" data-id="q21">Load Answer</button>
+<div class="answer-container" id="answer-q21"></div>
+<p id="q22">22. Find the even and odd components of the signal $x(n) = \{3, 2, 1, 4, 5\}$. <span style="color:red">mark 6 ASTU 2018</span></p>
+<button class="load-answer" data-id="q22">Load Answer</button>
+<div class="answer-container" id="answer-q22"></div>
+<p id="q23">23. Sketch and label the even and odd components of the signal shown in Figure 1. <span style="color:red">mark 4 ASTU 2018</span><br><a href="https://i.ibb.co/qYSSvQbF/Screenshot-2026-10-21-162032.webp"><img src="https://i.ibb.co/qYSSvQbF/Screenshot-2026-10-21-162032.webp" alt="Figure" width="300"></a></p>
+<button class="load-answer" data-id="q23">Load Answer</button>
+<div class="answer-container" id="answer-q23"></div>
+
+
+
+<h2 style="background-color: rgb(7, 23, 46);display:inline">Module 2</h2>
+<p><b>1.</b> (a) Invertible systems are systems in which <br>(i) output can be uniquely obtained from the knowledge of input <br>(ii) input signal can be uniquely determined by observing the output signal <br>(iii) both (a) and (b) <br>(iv) system output is always constant <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(b) What are the properties that only LTI systems follow? <br>(i) Commutative property, Associative property, Causality <br>(ii) Associative property, Distributive property, Causality <br>(iii) Commutative property, Distributive property, Associative property <br>(iv) Distributive property, Stability, Causality <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(c) Derive the condition for stability of a continuous time LTI system. <span style="color:red">mark 4 ASTU 2025</span></p>
+
+<p>Find the natural response of the system described by difference equation $y(n) + 2y(n-1) + y(n-2) = x(n) + x(n-1)$ <span style="color:red">mark 10 ASTU 2025</span></p>
+
+<p>(d) Determine the output response $y(n)$ if $x(n) = \{1,2,3,2\}$; $h(n) = \{1,2,2\}$ <span style="color:red">mark 5 ASTU 2025</span></p>
+<p><b>2.</b> (a) The characteristics of an LSI system are completely characterized by its <br>(i) Step response <br>(ii) Impulse response <br>(iii) Transfer function <br>(iv) None of the above <span style="color:red">mark 1 ASTU 2023</span></p>
+
+<p>(b) Aliasing occurs when the signal is <br>(i) Over sampled <br>(ii) Under sampled <br>(iii) Critically sampled <br>(iv) Sampled <span style="color:red">mark 1 ASTU 2023</span></p>
+
+<p>(c) Explain Linear Shift-Invariant (LSI) or Linear Time-Invariant (LTI) system. Describe the properties of an LTI system.  <span style="color:red">mark 7 ASTU 2023</span></p>
+
+<p>(d) Define impulse response of a system and write the expression for transfer function in terms of input signal and output signal.  <span style="color:red">mark 4 ASTU 2023</span></p>
+
+<p>(e) Determine the output of an LTI system whose input signal and unit impulse response are given as follows : $x(n) = b_n u(n)$ and $h(n) = a_n u(n)$.  <span style="color:red">mark 4 ASTU 2023</span></p>
+<p><b>3.</b>(a) A LTI system has simple poles at $-2$ and $-4$; zero at $-3$. If the steady-state output when unit step input is applied is $1$, then find impulse response of the system. 
+
+<br>(i) $\frac{3(S + 3)}{(S + 2)(S + 4)}$ 
+
+<br>(ii) $\frac{11(S + 3)}{4(S + 2)(S + 4)}$ 
+
+<br>(iii) $\frac{8(S + 3)}{3(S + 2)(S + 4)}$ 
+<br>(iv) None of these <span style="color:red">mark 1 ASTU 2021</span></p>
+
+<p>(b) Given s signal $x[n]$ which is not absolutely summable and square summable, then which of following is true as related to $F\{x[n]\}$? 
+
+<br>(i) exists 
+
+<br>(ii) can't say 
+<br>(iii) doesn't say 
+
+<br>(iv) exists if $x[n]$ is differentiable <span style="color:red">mark 1 ASTU 2021</span></p>
+
+<p>(c) Determine the impulse response $h(t)$ of the following system. Assume zero initial conditions $\frac{d^2 y(t)}{dt^2} + 4\frac{dy(t)}{dt} + 3y(t) = \frac{dx(t)}{dt} + 2x(t)$. <span style="color:red">mark 7 ASTU 2021</span></p>
+
+<p>(d) Perform the convolution of $x_1(t)$ and $x_2(t)$ using convolution theorem of Laplace transform.
+
+<br>$x_1(t) = u(t+1), x_2(t) = r(t-2)$ where $r(t) = tu(t)$ <span style="color:red">mark 5 ASTU 2021</span></p>
+
+<p>(e) Show that $X(j\omega) = X(s)|_{s=j\omega}$. <span style="color:red">mark 3 ASTU 2021</span></p>
+<p><b>4.</b> (a) The impulse response of a system is given to be $h(t) = \begin{cases} t, & 0 \leq t \leq 2T \\ 0, & \text{otherwise} \end{cases}$ 
+
+and the input to the system is $x(t) = \begin{cases} u(t), & 0 \leq t \leq T \\ 0, & \text{otherwise} \end{cases}$ Find the output $y(t)$ of the system. <span style="color:red">mark 6 ASTU 2018</span></p>
+
+<p>(b) Obtain the linear convolution of the sequences $x(n) = \{1, -2, 3, -2\}$ and $h(n) = \{2, -3, 4\}$ by using the: 
+
+<br>(i) Cross-table method 
+
+<br>(ii) Matrix method. $(6 + 4 = 10)$ <span style="color:red">mark 4 ASTU 2018</span></p>
+<h2 style="background-color: rgb(27, 8, 49);display:inline">Module 3</h2>
+<p><b>1.</b> (a) If a periodic signal has an even symmetry, the Fourier series contains <br>(i) only sine terms <br>(ii) only cosine terms <br>(iii) constant and cosine terms <br>(iv) both sine and cosine terms <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(b) Fourier transform is applicable to <br>(i) only periodic signals <br>(ii) only aperiodic signals <br>(iii) both periodic and aperiodic signals <br>(iv) only random signals <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(c) What is Fourier series? <span style="color:red">mark 2 ASTU 2025</span></p>
+
+<p>(d) Prove the Parseval's theorem of DTFT. <span style="color:red">mark 5 ASTU 2025</span></p>
+
+<p>(e) Find the Fourier transform of $\delta(t)$. <span style="color:red">mark 2 ASTU 2025</span></p>
+
+<p>(f) State the conditions for the existence of Fourier series. <span style="color:red">mark 5 ASTU 2025</span></p>
+<p><b>2.</b> (a) The trigonometric Fourier series representation of an odd function consists of <br>(i) Cosine terms only <br>(ii) Sine terms only <br>(iii) Both sine and cosine terms <br>(iv) None <span style="color:red">mark 1 ASTU 2023</span></p>
+
+<p>(b) Discuss the concept of trigonometric Fourier series and derive the expressions for coefficients. <span style="color:red">mark 5 ASTU 2023</span></p>
+
+<p>(c) Obtain the Fourier transform of the following functions: 
+
+<br>(i) Unit step function 
+
+<br>(ii) Unit impulse function
+
+<br>(iii) Signum function. <span style="color:red">mark 5 ASTU 2023</span></p>
+
+<p>(d) State and prove the following properties of Fourier Transform. 
+
+<br>(i) Time shifting
+
+<br>(ii) Convolution in time domain <span style="color:red">mark 5 ASTU 2023</span></p>
+<p><b>3. </b>(a) Find the Fourier series expansion of $F(x) = \sin^3(x)$ <br>(i) $\frac{1}{4}\sin(x)-\frac{3}{4}\cos(3x)$ <br>(ii) $\frac{3}{4}\sin(x)-\frac{1}{4}\sin(3x)$ <br>(iii) $\frac{1}{4}\sin(x)-\frac{3}{4}\sin(3x)$ <br>(iv) $\frac{1}{4}\cos(x)-\frac{3}{4}\cos(3x)$ <span style="color:red">mark 1 ASTU 2021</span></p>
+
+<p>(b) The Fourier transform of a DC signal is <br>(i) 0 <br>(ii) 1 <br>(iii) $\pi$ <br>(iv) $2\pi\delta(\omega)$ <span style="color:red">mark 1 ASTU 2021</span></p>
+
+<p>(c) Determine the Fourier series representation of the half-wave rectifier output. <span style="color:red">mark 9 ASTU 2021</span></p>
+
+<p>(d) State three advantages of Fourier transform. <span style="color:red">mark 3 ASTU 2021</span></p>
+
+<p>(e) State the conditions for existence of Fourier Transform. <span style="color:red">mark 3 ASTU 2021</span></p>
+
+<p>(f) Determine the Fourier transform of the periodic pulse function shown in figure below: <span style="color:red">mark 10 ASTU 2021</span><br><a href="https://i.ibb.co/G4QxFyrj/ee59a030-6846-4d86-8cb1-1ad109eb9628.webp">
+  <img src="https://i.ibb.co/G4QxFyrj/ee59a030-6846-4d86-8cb1-1ad109eb9628.webp" alt="Figure" width="300"></a></p>
+
+<p>(g) Compute 4-point DFT of causal three sample sequence given by,<span style="color:red">mark 10 ASTU 2021</span><br> $x[n] = \begin{cases} \frac{1}{3}; & 0 \leq n \leq 2 \\ 0; & \text{none} \end{cases}$ 
+</p>
+<h2 style="background-color: rgb(4, 13, 28);display:inline">Module 4</h2>
+<p>1.(a) What is the ROC of $x(t) = e^{-2t}u(t) + e^{-3t}u(t)$? <br>(i) $\sigma > 2$ <br>(ii) $\sigma > 3$ <br>(iii) $\sigma > -3$ <br>(iv) $\sigma > -2$ <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(b) Find the Laplace transform of the signal $x(t) = e^{-b|t|}$ Also plot its ROC. <span style="color:red">mark 5+2 ASTU 2025</span></p>
+
+<p>(c) Compare Laplace transform and Z-transform. <span style="color:red">mark 4 ASTU 2025</span></p>
+
+<p>2.(a) Define Laplace transform and discuss its existence. <span style="color:red">mark 4 ASTU 2023</span></p>
+
+<p>(b) Prove that the signals $x(t)=e^{-at}u(t)$ and $x(t)=-e^{-at}u(-t)$ have the same LT but differ only in ROC. <span style="color:red">mark 4 ASTU 2023</span></p>
+
+<p>(c) Find the Inverse Laplace transform of $X(S)=\frac{1}{(s+4)(s-2)}$ if the ROC is (i) ROC : $Re(s) < -4$ (ii) ROC : $Re(S) > 2$ (iii) ROC : $-4 < Re(s) < 2$. <span style="color:red">mark 7 ASTU 2023</span></p>
+
+<p><b>3.</b>(a) Establish the relation between Fourier Transform and Laplace Transform from their basic definitions. <span style="color:red">mark 3 ASTU 2018</span></p>
+
+<p>(b) Find Laplace Transform of the signal $x(t) = 3e^{-2t}u(t) - 2e^{-t}u(t)$ and plot the Region of Convergence (ROC). <span style="color:red">mark 4 ASTU 2018</span></p>
+
+<p>(c) State the initial and final value theorem for Laplace Transform. <span style="color:red">mark 3 ASTU 2018</span></p>
+<h2 style="background-color: rgb(3, 8, 23);display:inline">Module 5</h2>
+<p><b>1. </b>(a) What is the z-transform of $x(n) = \{2,4,5,7,0,1\}$? <br>(i) $2 + 4z + 5z^2 + 7z^3 + z^4$ <br>(ii) $2 + 4z + 5z^2 + 7z^3 + z^5$ <br>(iii) $2 + 4z^{-1} + 5z^{-2} + 7z^{-3} + z^{-5}$ <br>(iv) $2z^2 + 4z + 5 + 7z^{-1} + z^{-3}$ <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(b) Prove the convolution property of Z-transform. <span style="color:red">mark 7 ASTU 2025</span></p>
+
+<p><b>2. </b>(a) Find the inverse Z-transform of $X(z)=\frac{z}{(z+2)(z-3)}$ when the ROC is (i) ROC : $|z|< 2$ (ii) $2< |z|< 3$. <span style="color:red">mark 6 ASTU 2023</span></p>
+
+<p>(b) Using Z-transforms, find $x_1(n) * x_2(n)$, if $x_1(n)=u(n)$ and $x_2(n)=\left(\frac{1}{2}\right)^n u(n)$. <span style="color:red">mark 5 ASTU 2023</span></p>
+
+<p>(c) Distinguish between one-sided and two sided Z-transforms and its region of convergence. <span style="color:red">mark 4 ASTU 2023</span></p>
+
+<p><b>3. </b>(a) Given for a signal $x[n]$, Z transform exists, which of the following is not possibly $x[n]$? <br>(i) $\left(\frac{1}{2}\right)^n u[n]$ <br>(ii) $2^n u[n]$ <br>(iii) $\{0, 1, 2, 3, 4\}$ <br>(iv) $-\left(\frac{1}{3}\right)^n u[-n-1]$ <span style="color:red">mark 1 ASTU 2021</span></p>
+
+<p>(b) Determine the discrete sequence $x[n]$ given $X(z)=\frac{3+2Z^{-1} + Z^{-2}}{1+3Z^{-1} + 2Z^{-2}}$. <span style="color:red">mark 5 ASTU 2021</span></p>
+
+<p>(c) Find the Z-transform and its ROC of the following discrete time signal $x(n)=0.8^n u(-n-1)$ <span style="color:red">mark 5 ASTU 2021</span></p>
+
+<p><b>4. </b>(a) Determine the Z-transform of the following signals. Also, plot and comment on Region of Convergence (ROC). <br>(i) $x(n)=-a^n u(-n-1)$ <br>(ii) $x(n)=a^n u(n)-b^n u(n)$, $b > a$. <span style="color:red">mark 4 ASTU 2018</span></p>
+
+<p>(b) Using Z-transform, determine the response of the system, whose linear constant coefficient difference equation is given by: <span style="color:red">mark 6 ASTU2018</span></p><div class="math-container"> $y(n)-0.1y(n-1)-0.12y(n-2)=x(n)-0.4x(n-1)$ when $y(-1)=y(-2)=2$ and $x(n)=(0.4)^n u(n)$. </div>
+
+
+
+
+<h2 style="color:white;"background-color: yellow;display:inline">Module 6</h2>
+<p>1. (a) Find the Nyquist rate and Nyquist interval for the signal $x(t) = \frac{\sin(500\pi t)}{\pi t}$ <br>(i) 500 Hz, 2 sec <br>(ii) 500 Hz, 2 msec <br>(iii) 2 Hz, 500 sec <br>(iv) 2 Hz, 500 msec <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(b) Which of the following is the process of 'aliasing'? <br>(i) peaks overlapping <br>(ii) phase overlapping <br>(iii) amplitude overlapping <br>(iv) spectral overlapping <span style="color:red">mark 1 ASTU 2025</span></p>
+
+<p>(c) What is anti-aliasing filter? <span style="color:red">mark 2 ASTU 2025</span></p>
+
+<p>(d) Explain zero-order hold for data reconstruction. <span style="color:red">mark 5 ASTU 2025</span></p>
+<p>(e) Prove that the Fourier transform of the sample signal is given by an infinite sum of shifted replicas of the Fourier transform of the original signal. <span style="color:red">mark 8 ASTU 2025</span></p>
+
+<p>2. (a) Analog signals can be converted into discrete-time signals by <br>(i) Sampling <br>(ii) Coding <br>(iii) Quantizing <br>(iv) None of the above <span style="color:red">mark 1 ASTU 2025</span></p>
+  <p>(a) State and prove the Sampling theorem for Band limited signals with graphical interpretation. <span style="color:red">mark 8 ASTU 2023</span></p>
+
+<p>(b) Determine the Nyquist sampling rate and Nyquist sampling interval for the following signals : <br>(i) $sinc^2(300\pi t)$ <br>(ii) $sinc(100\pi t) + 5 sinc^2(200\pi t)$. <span style="color:red">mark 4 ASTU 2023</span></p>
+
+<p>(c) A signal $x(t) = \sin(200\pi t)$ is sampled at a rate of <br>(i) 150 Hz <br>(ii) 225 Hz and <br>(iii) 300 Hz. For each of these three cases, can you recover signal $x(t)$ from the sampled signal $x_s(t)$? <span style="color:red">mark 3 ASTU 2023</span></p>
+
+<p>3. (a) The Nyquist sampling frequency for the signal $x(t) = 5\sin(\frac{\pi}{2})t$ is <br>(i) 0.5 Hz <br>(ii) 1 Hz <br>(iii) 2 Hz <br>(iv) 0.25 Hz <span style="color:red">mark 1 ASTU 2021</span></p>
+
+<p>(b) An analog signal $5 \sin 50\pi t$ is sampled at the rate of 75 Hz. The DT signal obtained after sampling is <br>(a) $5\sin(\frac{2\pi}{3})n$ <br>(b) $5\sin 2\pi n$ <br>(c) $5\sin 100\pi n$ <br>(d) $5\sin(\frac{4\pi}{3})n$ <span style="color:red">mark 1 ASTU 2021</span></p>
+
+<p>(c) The state-space representation of a continuous time system is given by,<br> $A = \begin{bmatrix} 2 & -1 \\ 3 & 1 \end{bmatrix}$; $B = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$; $C = \begin{bmatrix} 1 & 3 \end{bmatrix}$; $D = \begin{bmatrix} 3 \end{bmatrix}$. <br>Derive the transfer function of the continuous time system. <span style="color:red">mark 6 ASTU 2021</span></p>
+
+<p>(d) Find if the signal $x[n] = -(\frac{1}{2})^n u(-n-1)$ is energy or power signal. <span style="color:red">mark 4 ASTU 2021</span></p>
+
+<p>(e) Explain the zero-order hold sampling circuit in detail. <span style="color:red">mark 5 ASTU 2021</span></p>
+
+<p>4. (a) State the sampling theorem. Considering any arbitrary signal and show the effects when it is sampled at Nyquist's rate, above Nyquist rate and below Nyquist rate. <span style="color:red">mark 5 ASTU 2018</span></p>
+
+<p>(b) For the given signal: $x(t) = \sin 2000\pi t + 2\cos 6000\pi t - 4\sin 8000\pi t$, obtain the resultant discrete-time signal when a sampling rate of 6000 samples per sec is applied on it. <span style="color:red">mark 5 ASTU 2018</span></p>
+
+<nav class="bottom-nav">
+
+    <a href="/" class="bottom-nav-item active">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+    </a>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSedUsQrVbQSeFWNbfARpo1dpVXqSl_Z7SNLRG7q0t6ADYStZA/viewform" class="bottom-nav-item">
+        <span class="nav-icon">⚑</span>
+        <span>Report</span>
+    </a>
+
+</nav><footer class="footer">
+            © 2026 StudyXohai | Rahul Ahmed | <a href="https://studyxohai.netlify.app/" target="_blank" rel="noopener">Home</a>
+            <div class="social-links">
+            <a href="https://www.instagram.com/studyxohai/" target="_blank" rel="noopener">
+                StudyXohai
+            </a></div>
+        </footer>
+</body>
+</html> 
