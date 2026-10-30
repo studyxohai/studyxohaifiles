@@ -1,9 +1,5 @@
 {
-  "q1": "<h3>Solution</h3><p>1.(a) Correct Option: (i) 1</p>
-<p>Explanation: By using the sifting property of the Dirac delta function, we know that:</p>
-<p>$\int_{-\infty}^{\infty} \delta(t - t_0) f(t) dt = f(t_0)$</p>
-<p>Here, $t_0 = 0$ and $f(t) = \cos\left(\frac{3t}{2}\right)$. Substituting $t = 0$ into the function gives:</p>
-<p>$f(0) = \cos\left(\frac{3(0)}{2}\right) = \cos(0) = 1$</p>",
+  "q1": "<h3>Solution</h3><p>1.(a) Correct Option: (i) 1</p>\n<p>Explanation: By using the sifting property of the Dirac delta function, we know that:</p>\n<p>$\\int_{-\\infty}^{\\infty} \\delta(t - t_0) f(t) dt = f(t_0)$</p>\n<p>Here, $t_0 = 0$ and $f(t) = \\cos\\left(\\frac{3t}{2}\\right)$. Substituting $t = 0$ into the function gives:</p>\n<p>$f(0) = \\cos\\left(\\frac{3(0)}{2}\\right) = \\cos(0) = 1$</p>",
   "q2": "<h3>Solution</h3><p>Answer for Question 2 goes here.</p>",
   "q3": "<h3>Solution</h3><p>Answer for Question 3 goes here.</p>"
 }
