@@ -1,3 +1,9 @@
 {
-  "q1": "<h3>Solution</h3>\n<p>A <b>half-wave lllllllllllllllrectifier</b> is an electronic circuit that converts an AC signal into a pulsating DC signal by allowing only one half-cycle of the input AC waveform to pass through the load.</p>\n\n<p>During the positive half-cycle, the diode is forward biased and conducts current. During the negative half-cycle, the diode is reverse biased and blocks current.</p>\n\n<p>Therefore, the output consists of only one half of the original AC waveform.</p>\n\n<h4>Key Point</h4>\n<p>A half-wave rectifier uses a single diode and produces a pulsating DC output from an AC input.</p>"
+  "q1": "<h3>Solution</h3><p>1.(a) Correct Option: (i) 1</p>
+<p>Explanation: By using the sifting property of the Dirac delta function, we know that:</p>
+<p>$\int_{-\infty}^{\infty} \delta(t - t_0) f(t) dt = f(t_0)$</p>
+<p>Here, $t_0 = 0$ and $f(t) = \cos\left(\frac{3t}{2}\right)$. Substituting $t = 0$ into the function gives:</p>
+<p>$f(0) = \cos\left(\frac{3(0)}{2}\right) = \cos(0) = 1$</p>",
+  "q2": "<h3>Solution</h3><p>Answer for Question 2 goes here.</p>",
+  "q3": "<h3>Solution</h3><p>Answer for Question 3 goes here.</p>"
 }
